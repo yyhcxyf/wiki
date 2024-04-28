@@ -1,69 +1,69 @@
 ---
-title: Homepage
+标题：主页
 ---
 
-# 编程入门（C/C++）
+#编程入门(C/C++)
 
-<small>
-Fall 2023, Instructor: Huanchen Zhang
-</small>
+<小的>
+2023年秋季，讲师：张焕晨
+</小的>
 
-!!! note ""
+！！！注意“”
 
-    <span id="ongoing" markdown style="display:none;">
-    :fire: Ongoing
+    <span id="正在进行"降价样式="显示：无；">
+    ：火：进行中
     </span>
-    <span id="incoming" markdown style="display:none;">
-    :alarm_clock: Incoming
+    <span id="incoming"markdown style="display:none；">
+    ：alarm_clock:incoming
     </span>
     <br/>
-    <big style="font-size: 2em;"><bold id="hw-title">Assignment 2</bold> &mdash; <span id="rest-time"></span></big><br/>
-    <small><span id="time-type">Due time: </span><span id="due-time"></span></small>
+    <big style="font-size:2EM；"><bold id="hw-title">工作分配2</bold>&mdash；<span id="rest-time"></span></big><br/>
+    <small><span id="time-type">到期时间：</span><span id="到期时间"></span></small>
 
-<script>
-    const schedule = {
-        'Assginment 1': ['2023/09/24 00:00:00 GMT+08:00', '2023/10/08 23:59:00 GMT+08:00'],
-        'Assginment 2': ['2023/10/08 00:00:00 GMT+08:00', '2023/10/22 23:59:00 GMT+08:00'],
-        'Assginment 3': ['2023/10/22 00:00:00 GMT+08:00', '2023/11/05 23:59:00 GMT+08:00'],
-        'Assginment 4': ['2023/11/05 00:00:00 GMT+08:00', '2023/11/19 23:59:00 GMT+08:00'],
-        'Project 1': ['2023/11/19 23:00:00 GMT+08:00', '2023/12/17 23:59:00 GMT+08:00'],
-        'Project 2': ['2023/12/27 23:00:00 GMT+08:00', '2024/01/21 23:59:00 GMT+08:00'],
-    };
-        function setTime() {
-            const cur_date = new Date();
-            let due_date = null;
-            let title = '';
-            let state = 'finished';
-            for (let [k, [start, end]] of Object.entries(schedule)) {
-                start = new Date(start);
-                end = new Date(end);
-                if (start < cur_date && cur_date < end) {
-                    due_date = end;
-                    title = k;
-                    state = 'ongoing';
-                    break;
-                } else if (cur_date > end && (end > due_date || due_date === null)) {
-                    title = k;
-                    due_date = end;
-                } else if (cur_date < start && (start < due_date || due_date === null)) {
-                    title = k;
-                    due_date = start;
-                    state = 'incoming';
-                }
-            }
-            if (state === 'ongoing') {
-                document.getElementById('ongoing').style.display = 'inline';
-                document.getElementById('incoming').style.display = 'none';
-                document.getElementById('time-type').innerHTML = 'Due time: ';
-            } else if (state === 'incoming') {
-                document.getElementById('incoming').style.display = 'inline';
-                document.getElementById('ongoing').style.display = 'none';
-                document.getElementById('time-type').innerHTML = 'Release time: ';
-            }
-            document.getElementById('due-time').innerHTML = due_date.toLocaleString();
-            document.getElementById('hw-title').innerHTML = title;
-            let diff = due_date.getTime() - cur_date.getTime();
-            let str = '';
+<脚本>
+Const计划表={
+'作业1':['2023/09/2400:00:00GMT+08:00','2023/10/0823:59:00GMT+08:00'],
+'作业2':['2023/10/0800:00:00GMT+08:00','2023/10/2223:59:00GMT+08:00'],
+'任务3':['2023/10/2200:00:00GMT+08:00','2023/11/0523:59:00GMT+08:00'],
+'作业4':['2023/11/0500:00:00GMT+08:00','2023/11/1923:59:00GMT+08:00'],
+'项目1':['2023/11/1923:00:00GMT+08:00','2023/12/1723:59:00GMT+08:00'],
+'项目2':['2023/12/2723:00:00GMT+08:00','2024/01/2123:59:00GMT+08:00'],
+};
+功能setime(){
+常数cur_date=新的日期()；
+让到期日(_D)=无效的；
+让 标题='';
+让 状态='已完成';
+为(让[k，[开始,结束]] …… 的对象。 条目(计划表)) {
+开始=新的日期(开始);
+end=新的日期(结束)；
+如果(开始时间<cur_date&&cur_date<结束时间){
+due_date=end；
+title=k；
+状态='正在进行';
+打破;
+}其他如果(cur_date>end&&(end>due_date||due_date===无效的)){
+title=k；
+due_date=end；
+}其他如果(cur_date<开始&&(开始时间<due_date||due_date===无效的)){
+title=k；
+到期日=开始；
+;
+}
+}
+if(状态==='正在进行'){
+文件。getElementById(“正在进行”)。风格。显示='inline'；
+文件。getElementById('incoming')。风格。显示='无'；
+文件。getElementById('time-type')。innerHTML='到期时间：'；
+}else if(状态==='incoming'){
+文件。getElementById('incoming')。风格。显示='inline'；
+文件。getElementById(“正在进行”)。风格。显示='无'；
+文件。getElementById('time-type')。innerHTML='释放时间：'；
+}
+document.getElementById('due-time').innerHTML=due_date.toLocaleString()；
+document.getElementById('hw-title').innerHTML=title；
+让diff=due_date.getTime()-cur_date.getTime()；
+设str="；
             if (diff < 0) {
                 str = 'Finished';
             } else {
